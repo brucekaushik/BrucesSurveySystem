@@ -8,7 +8,7 @@ print_r($_SESSION);
 echo "</pre>";
 //*/
 
-require '../08-adminArea/includes/dbConnect.inc.php';
+require '../BrucesAdminArea/includes/dbConnect.inc.php';
 
 ?>
 

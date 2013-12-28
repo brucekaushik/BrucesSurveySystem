@@ -10,7 +10,7 @@ echo "</pre>";
 //*/
 
 // connect to database
-require '../08-adminArea/includes/dbConnect.inc.php';
+require '../BrucesAdminArea/includes/dbConnect.inc.php';
 
 // query user details from the database and store then in an array
 $userDetailsQuery = "select * from AdminArea where username='$ses_username'";
