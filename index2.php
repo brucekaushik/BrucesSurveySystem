@@ -10,6 +10,7 @@ echo "</pre>";
 //*/
 
 // handle variables
+$ses_username = $_SESSION['username'];
 unset($_SESSION['app_name']);
 unset($_SESSION['verify_back_to']);
 unset($_SESSION['action']);
