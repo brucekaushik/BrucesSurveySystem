@@ -1,5 +1,10 @@
-<div class="topnav">
-	<a href="../BrucesAdminArea/index.php">Home</a> |
-	<a href="index.php">SurveySystem Home</a> |
-	<a href="../BrucesAdminArea/home.php?action=logout">Logout</a>
-</div>
+<?php
+ 
+// show navigation depending on user level
+if($ses_user_level == "reg"){
+	include 'includes/reg-users/topnav.inc.php';
+}elseif ($ses_user_level == "admin" || $ses_user_level == "root"){
+	include 'includes/admin-users/topnav.inc.php';
+}
+
+?>

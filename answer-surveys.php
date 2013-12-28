@@ -30,8 +30,10 @@ require '../BrucesAdminArea/includes/dbConnect.inc.php';
 				
 		<?php 
 		
+			// handle variables
 			@$action = $_GET['action'];
 					
+			// take action depending on link clicked/form submitted etc		
 			switch ($action){
 				
 				case "TakeSurvey":

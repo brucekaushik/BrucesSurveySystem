@@ -8,6 +8,11 @@ print_r($_SESSION);
 echo "</pre>";
 //*/
 
+
+// handle varibles
+$ses_user_level = $_SESSION['user_level'];
+
+// connect to database
 require '../BrucesAdminArea/includes/dbConnect.inc.php';
 
 ?>
@@ -16,18 +21,20 @@ require '../BrucesAdminArea/includes/dbConnect.inc.php';
 <html>
 <head>
 	<title>Manage Polls</title>
+	<link type="text/css" rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<div class="wrapper">
+	<?php include 'includes/topnav.inc.php' ?>
+	<div class="content">
 	
 		<?php if($ses_user_level == "admin" || $ses_user_level == "root"): ?>
 		
-		<?php include 'includes/admin-users/topnav.inc.php'; ?>
-		
 		<?php 
 		
+			// handle variables
 			@$action = $_GET['action'];
 					
+			// take action depending on link clicked/form submitted etc
 			switch ($action){
 				
 				case "AddSurvey":
