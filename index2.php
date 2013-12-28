@@ -9,6 +9,11 @@ print_r($_SESSION);
 echo "</pre>";
 //*/
 
+// handle variables
+unset($_SESSION['app_name']);
+unset($_SESSION['verify_back_to']);
+unset($_SESSION['action']);
+
 // connect to database
 require '../BrucesAdminArea/includes/dbConnect.inc.php';
 
