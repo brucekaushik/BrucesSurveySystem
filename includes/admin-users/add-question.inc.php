@@ -1,9 +1,11 @@
 <?php 
 
+// handle variables
 $id = $_GET["id"];
 
 ?>
 
+<!-- display all the available question types -->
 <div class="add-question">
 	<h3>What type of question would you like to add?</h3>
 	<a href="manage-surveys.php?action=AddQuestion&type=FillIn&id=<?php echo $id ?>">Fill In The Blanks</a> |
@@ -14,6 +16,7 @@ $id = $_GET["id"];
 
 <?php 
 
+// handle variables
 @$type = $_GET["type"];
 $id = $_GET["id"];
 
@@ -21,6 +24,7 @@ $id = $_GET["id"];
 
 <?php 
 
+// show form according to the type of the question
 switch ($type): 
 	
 	case "FillIn": ?>

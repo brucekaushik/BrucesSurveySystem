@@ -1,5 +1,6 @@
 <?php 
 
+// handle variables
 $id = $_POST["id"];
 $question = $_POST["question"];
 $type = $_POST["type"];
@@ -43,6 +44,7 @@ echo $type;
 echo "<br>";
 //*/
 
+// query the db for all the questions of the survey
 $query = " SELECT * FROM SurveyQuestions WHERE survey_id='$id' ";
 $res = mysql_query($query) or die(mysql_error());
 while($row = mysql_fetch_array($res, MYSQL_ASSOC)){
@@ -55,6 +57,7 @@ print_r($rows);
 echo "</pre>";
 //*/
 
+// set the question number
 if(isset($rows)){
 	$count = count($rows) - 1;
 	// echo '<br><br>Count Is =>' . $count . '<br><br>';
@@ -63,6 +66,7 @@ if(isset($rows)){
 	$qno = 1;	
 }
 
+// depending on the type of the question insert it into the database
 switch ($type){
 	
 	case "fill-in":

@@ -1,7 +1,10 @@
 <?php
 
+// handle variables
 $id = $_GET["id"];
 
+// query the database for all the questions of the survey
+// store the questions in an array, each question is an array item
 $query = " SELECT * FROM SurveyQuestions WHERE survey_id='$id' ";
 $res = mysql_query($query) or die(mysql_error());
 while($row = mysql_fetch_array($res, MYSQL_ASSOC)){
@@ -19,7 +22,11 @@ echo "</pre>";
 <br><br>
 <form name="questions" method="post">
 
-	<?php foreach($rows as $x): ?>
+	<?php 
+	
+	// loop through array, display each question depending on its type
+	// provide an option to delete the question 
+	foreach($rows as $x): ?>
 		
 		<?php 
 		
