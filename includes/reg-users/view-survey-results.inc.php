@@ -1,7 +1,11 @@
 <?php 
 
+// handle variables
 $id = $_GET["id"];
 
+// TODO: sanitize the above variables
+
+// query the database for answers of the survey, store them in an array
 $query1 = " SELECT ans,question_number FROM SurveyAnswers WHERE survey_id='$id' ";
 $res1 = mysql_query($query1) or die(mysql_error());
 while($row1 = mysql_fetch_array($res1, MYSQL_ASSOC)){
@@ -14,6 +18,7 @@ print_r($rows1);
 echo "</pre>";
 //*/
 
+// query the database for questions of the survey, store them in an array
 $query2 = " SELECT * FROM SurveyQuestions WHERE survey_id='$id' ";
 $res2 = mysql_query($query2) or die(mysql_error());
 while($row2 = mysql_fetch_array($res2, MYSQL_ASSOC)){
@@ -29,6 +34,7 @@ while($row2 = mysql_fetch_array($res2, MYSQL_ASSOC)){
 	$r2o4 = $row2["option4"];
 	$r2o5 = $row2["option5"];
 	
+	// initilize some variables that will be incremented later
 	$num_people = 0;
 	$a_yes = 0;
 	$a_no = 0;
@@ -106,8 +112,8 @@ while($row2 = mysql_fetch_array($res2, MYSQL_ASSOC)){
 	
 		echo "<div>";
 			echo "<h2>$q</h2>";
-			echo "<p>% of people who answered this question => $num_people</p>";
-			echo "<p>% of people who answered 'Yes' => " . ( $a_yes / $num_people) * 100 . "%</p>";
+			echo "<p>Number of people who answered this question => $num_people</p>";
+			echo "<p>% of people who answered 'Yes' => " . ( $a_yes / $num_people) * 100 . "</p>";
 			echo "<p>% of people who answered 'No' => " . ( $a_no / $num_people) * 100 . "</p>";
 		echo "</div>";
 		
@@ -119,19 +125,19 @@ while($row2 = mysql_fetch_array($res2, MYSQL_ASSOC)){
 			echo "<h2>$q</h2>";
 			echo "<p>Number of people who answered this question => $num_people</p>";
 			if($r2o1){
-				echo"<p>% of people who answered '$r2o1' => " .  ( $o1 / $num_people ) * 100 . "%<p>";
+				echo"<p>% of people who answered '$r2o1' => " .  ( $o1 / $num_people ) * 100 . "<p>";
 			}
 			if($r2o2){
-				echo "<p>% of people who answered '$r2o2' => " .  ( $o2 / $num_people ) * 100 . "%<p>";
+				echo "<p>% of people who answered '$r2o2' => " .  ( $o2 / $num_people ) * 100 . "<p>";
 			}
 			if($r2o3){
-				echo "<p>% of people who answered '$r2o3' => " .  ( $o3 / $num_people ) * 100 . "%<p>";
+				echo "<p>% of people who answered '$r2o3' => " .  ( $o3 / $num_people ) * 100 . "<p>";
 			}
 			if($r2o4){
-				echo "<p>% of people who answered '$r2o4' => " .  ( $o4 / $num_people ) * 100 . "%<p>";
+				echo "<p>% of people who answered '$r2o4' => " .  ( $o4 / $num_people ) * 100 . "<p>";
 			}
 			if($r2o5){
-				echo "<p>% of people who answered '$r2o5' => " .  ( $o5 / $num_people ) * 100 . "%<p>";
+				echo "<p>% of people who answered '$r2o5' => " .  ( $o5 / $num_people ) * 100 . "<p>";
 			}
 		echo "</div>";
 	
@@ -143,19 +149,19 @@ while($row2 = mysql_fetch_array($res2, MYSQL_ASSOC)){
 			echo "<h2>$q</h2>";
 			echo "<p>Number of people who answered this question => $num_people</p>";
 			if($r2o1){
-				echo"<p>% of people who answered '$r2o1' => " .  ( $o1 / $num_people ) * 100 . "%<p>";
+				echo"<p>% of people who answered '$r2o1' => " .  ( $o1 / $num_people ) * 100 . "<p>";
 			}
 			if($r2o2){
-				echo "<p>% of people who answered '$r2o2' => " .  ( $o2 / $num_people ) * 100 . "%<p>";
+				echo "<p>% of people who answered '$r2o2' => " .  ( $o2 / $num_people ) * 100 . "<p>";
 			}
 			if($r2o3){
-				echo "<p>% of people who answered '$r2o3' => " .  ( $o3 / $num_people ) * 100 . "%<p>";
+				echo "<p>% of people who answered '$r2o3' => " .  ( $o3 / $num_people ) * 100 . "<p>";
 			}
 			if($r2o4){
-				echo "<p>% of people who answered '$r2o4' => " .  ( $o4 / $num_people ) * 100 . "%<p>";
+				echo "<p>% of people who answered '$r2o4' => " .  ( $o4 / $num_people ) * 100 . "<p>";
 			}
 			if($r2o5){
-				echo "<p>% of people who answered '$r2o5' => " .  ( $o5 / $num_people ) * 100 . "%<p>";
+				echo "<p>% of people who answered '$r2o5' => " .  ( $o5 / $num_people ) * 100 . "<p>";
 			}
 		echo "</div>";
 	

@@ -26,7 +26,9 @@ require '../BrucesAdminArea/includes/dbConnect.inc.php';
 	<?php include 'includes/topnav.inc.php' ?>
 	<div class="content">
 	
-		<?php if($ses_user_level == "reg"): ?>
+		<?php // if the user is logged in and is registered
+		 
+		if($ses_user_level == "reg"): ?>
 				
 		<?php 
 		

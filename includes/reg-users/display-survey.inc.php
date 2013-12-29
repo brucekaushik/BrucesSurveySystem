@@ -1,7 +1,11 @@
 <?php
 
+// handle variables
 $id = $_GET["id"];
 
+// TODO: sanitize id 
+
+// query the database for the specific survey and store its questions in an array
 $query = " SELECT * FROM SurveyQuestions WHERE survey_id='$id' ";
 $res = mysql_query($query) or die(mysql_error());
 while($row = mysql_fetch_array($res, MYSQL_ASSOC)){
@@ -14,12 +18,15 @@ print_r($rows);
 echo "</pre>";
 //*/
 
+// handle variables
 $no_of_q = count($rows);
-
 // echo "<br>$no_of_q<br>";
 
+// query the database for ip addresses of users
 $ip_query = " SELECT ip_address FROM SurveyAnswers WHERE survey_id='$id' ";
 $ip_res = mysql_query($ip_query) or die(mysql_error());
+
+// loop through ip addresses and verify if the user did not take the survey already
 while($ip_row = mysql_fetch_array($ip_res, MYSQL_ASSOC)){
 	
 	$ip = $ip_row['ip_address'];
@@ -33,6 +40,7 @@ while($ip_row = mysql_fetch_array($ip_res, MYSQL_ASSOC)){
 	
 }
 
+// if there are no rows, the user is eligible
 if(!$ip_row){
 	$eligible = "yes";
 } 
@@ -43,11 +51,13 @@ print_r($ip_rows);
 echo "</pre>";
 //*/
 
-$eligible = "yes";
+$eligible = "yes"; // fail safe for testing in local computers...  
 
 ?>
 
-<?php if($eligible == "yes"): ?>
+<?php 
+// if the user is eligible show the survey
+if($eligible == "yes"): ?>
 
 	<br><br>
 	<form name="questions" method="post" action="answer-surveys.php?action=SurveyAnswersSubmission">
@@ -56,6 +66,7 @@ $eligible = "yes";
 			
 			<?php 
 			
+			// handle variables
 			$id = $x["survey_id"];
 			$qno = $x["question_number"];
 			$qtype = $x["question_type"];
@@ -68,7 +79,9 @@ $eligible = "yes";
 			
 			?>
 					
-			<?php switch ($qtype):
+			<?php 
+			// display the options according to the question type 
+			switch ($qtype):
 			 
 				case "fill-in": ?>
 				
@@ -145,7 +158,9 @@ $eligible = "yes";
 		<button type="submit">Submit Answers</button>
 	</form>
 
-<?php elseif ($eligible == "no"): ?>
+<?php 
+// if the user is not eligible
+elseif ($eligible == "no"): ?>
 
 	<p>You have already answered this survey.</p>
 
